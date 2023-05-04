@@ -1,0 +1,73 @@
+﻿@page
+@model TaskManagement.Pages.EditTaskModel
+@{
+}
+
+<form method="post">
+    <div class="border p-3">
+        <input asp-for="Task.Id" hidden />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div> @*Optional, useful for top level summary*@
+        <div class="form-group row">
+            <h2>Update Tasks</h2>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-4"><label asp-for="Task.Name"></label></div>
+                    <div class="col-4"><label asp-for="Task.Priority"></label></div>
+                    <div class="col-4"><label asp-for="Task.Status"></label></div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <input asp-for="Task.Name" class="form-control" />
+                        <span asp-validation-for="Task.Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="Task.Priority" class="form-control" />
+                        <span asp-validation-for="Task.Priority" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <select asp-for="Task.Status" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+
+                        <span asp-validation-for="Task.Status" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-6" style="text-align:right">
+                        <button type="submit" class="btn btn-primary w-75">Update</button>
+                    </div>
+                    <div class="col-6" style="text-align:left">
+                        <a class="btn btn-danger w-75" asp-page="Index">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@*For client side validation *@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
